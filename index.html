@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Модальное окно профиля</title>
+    <title>หน้าต่างโมดัลโปรไฟล์</title>
     <link rel="stylesheet" href="./css/style.css" />
     <script src="./js/script.js" defer></script>
   </head>
@@ -11,45 +11,45 @@
     <main class="shell">
       <div class="grid">
         <section class="panel wide">
-          <h2>Карточка профиля</h2>
+          <h2>บัตรข้อมูลส่วนตัว</h2>
           <div class="profile">
-            <div class="avatar">П</div>
+            <div class="avatar">Q</div>
             <div>
-              <p class="small">Имя профиля</p>
-              <strong id="profile-name">Посетитель</strong>
+              <p class="small">ชื่อโปรไฟล์</p>
+              <strong id="profile-name">ผู้มาเยือน</strong>
             </div>
           </div>
-          <button id="open-dialog" class="btn primary">Изменить имя</button>
+          <button id="open-dialog" class="btn primary">เปลี่ยนชื่อ</button>
           <p id="profile-status" class="status" aria-live="polite">
-            Профиль открыт.
+            โปรไฟล์เปิดเป็นสาธารณะ.
           </p>
         </section>
       </div>
       <dialog id="profile-dialog" class="modal">
         <div class="modal-inner">
           <div class="modal-head">
-            <h2>Изменить имя</h2>
+            <h2>เปลี่ยนชื่อ</h2>
             <button
               id="close-dialog"
               class="close-btn"
               type="button"
-              aria-label="Закрыть окно"
+              aria-label="ปิดหน้าต่าง"
             >
               ×
             </button>
           </div>
-          <p class="muted">Введите имя для отображения на странице.</p>
+          <p class="muted">ป้อนชื่อที่จะให้แสดงบนหน้าเว็บ.</p>
           <form id="profile-form">
-            <label for="name-input" class="small">Ваше имя</label
+            <label for="name-input" class="small">ชื่อของคุณ</label
             ><input
               id="name-input"
               class="input"
               maxlength="35"
-              placeholder="Например, Мария"
+              placeholder="ตัวอย่างเช่น ชื่อของคุณ"
             />
             <p id="dialog-error" class="small" role="alert"></p>
             <div class="controls" style="margin-top: 20px">
-              <button class="btn primary" type="submit">Сохранить</button>
+              <button class="btn primary" type="submit">บันทึก</button>
             </div>
           </form>
         </div>
