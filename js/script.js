@@ -9,13 +9,28 @@ const profileName = document.querySelector("#profile-name");
 const status = document.querySelector("#profile-status");
 const dialogError = document.querySelector("#dialog-error");
 
-// Задание 1. На click кнопки openButton откройте dialog через showModal().
+openButton.addEventListener('click', () => {
+    dialog.showModal();
+});
 
-// Задание 2. На click кнопки closeButton закройте dialog через close().
-
-// Задание 3. На submit формы отмените перезагрузку страницы.
-// Если input.value.trim() не пустой, обновите profileName.textContent,
-// измените status и закройте dialog. Иначе покажите подсказку в dialogError.
-
-// Задание 4. Проверьте Escape: для <dialog> браузер уже умеет закрывать окно.
-// Дополнительный обработчик Escape писать не нужно.
+closeButton.addEventListener('click', () => {
+    dialog.close();
+});
+form.addEventListener('submit', (event) => {
+    event.preventDefault();   
+    const trimmedValue = input.value.trim();
+    
+    if (trimmedValue !== '') {
+        profileName.textContent = trimmedValue;
+        dialogError.textContent = '';
+        dialog.close();
+    } else {
+        dialogError.textContent = 'Имя не может быть пустым';
+    }
+});
+const cancelButton = document.querySelector('#cancel-dialog');
+if (cancelButton) {
+    cancelButton.addEventListener('click', () => {
+        dialog.close();
+    });
+}
