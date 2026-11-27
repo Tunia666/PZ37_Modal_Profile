@@ -1,21 +1,38 @@
-"use strict";
-
-const dialog = document.querySelector("#profile-dialog");
-const openButton = document.querySelector("#open-dialog");
-const closeButton = document.querySelector("#close-dialog");
-const form = document.querySelector("#profile-form");
-const input = document.querySelector("#name-input");
+const openDialogBtn = document.querySelector("#open-dialog");
+const closeDialogBtn = document.querySelector("#close-dialog");
+const profileDialog = document.querySelector("#profile-dialog");
+const profileForm = document.querySelector("#profile-form");
+const nameInput = document.querySelector("#name-input");
 const profileName = document.querySelector("#profile-name");
-const status = document.querySelector("#profile-status");
+const profileStatus = document.querySelector("#profile-status");
 const dialogError = document.querySelector("#dialog-error");
 
-// Задание 1. На click кнопки openButton откройте dialog через showModal().
+openDialogBtn.addEventListener("click", () => {
+  nameInput.value = profileName.textContent;
+  dialogError.textContent = "";
+  profileDialog.showModal();
+});
 
-// Задание 2. На click кнопки closeButton закройте dialog через close().
+closeDialogBtn.addEventListener("click", () => {
+  profileDialog.close();
+  profileStatus.textContent = "Изменение имени отменено.";
+});
 
-// Задание 3. На submit формы отмените перезагрузку страницы.
-// Если input.value.trim() не пустой, обновите profileName.textContent,
-// измените status и закройте dialog. Иначе покажите подсказку в dialogError.
+profileDialog.addEventListener("cancel", () => {
+  profileStatus.textContent = "Изменение имени отменено.";
+});
 
-// Задание 4. Проверьте Escape: для <dialog> браузер уже умеет закрывать окно.
-// Дополнительный обработчик Escape писать не нужно.
+profileForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const newName = nameInput.value.trim();
+  if (newName === "") {
+    dialogError.textContent = "Введите имя.";
+    return;
+  }
+
+  profileName.textContent = newName;
+  dialogError.textContent = "";
+  profileDialog.close();
+  profileStatus.textContent = "Имя профиля обновлено.";
+});
